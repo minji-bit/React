@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Header = () => {
+
+
+const Header = ({title}) => {
     return (
         <div>
-            <h1>Best Top 3</h1>
+            <h1>Best Top 3 {title}</h1>
+
         </div>
     );
 };

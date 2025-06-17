@@ -4,14 +4,17 @@ import Header from './components/Header'
 import Nav from './components/Nav'
 import Article from './components/Article'
 
+
 function App() {
  
 
   return (
     <>
-      <Header/>
+
+      <Header title="Trip"/>
       <Nav/>
-      <Article/>
+      <Article title="태어난김에 세계일주" body="올 여름 최고의 찬스"/>
+
     </>
   )
 }

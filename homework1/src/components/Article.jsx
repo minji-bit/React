@@ -1,10 +1,14 @@
 import React from 'react';
 import Trip from './Trip';
 
-const Article = () => {
+const Article = ({title,body}) => {
+   
     return (
         <div>
-            <h2>태어난 김에 세계일주</h2>
+            <h2>{title}</h2>
+            <p>이번 여름에 바다가 있는 테마 여행을 시작합니다.</p>
+            <p>{body}</p>
+
             <Trip/>
         </div>
     );

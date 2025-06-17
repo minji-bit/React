@@ -1,12 +1,17 @@
 import React from 'react';
-import hawaii from './assets/Hawaii.jpg';
+
+import hawaii from "../assets/Hawaii.jpg";
+
+import '../TripTest.css';
 
 const Trip = () => {
+     console.log(hawaii);
     return (
-        <div>
-            <h3>이번 여름에 바다가 있는 테마 여행을 시작합니다.</h3>
-            <img src={hawaii}/>
-        </div>
+        <>
+            
+            <img className="imgStyle" src={hawaii} alt=""/>
+        </>
+
     );
 };
 
