@@ -10,18 +10,30 @@ import 수박4 from '../assets/수박4.jpg';
 import '../Product.css';
 
 const Product = () => {
+    const watermelons=[
+        { id:1, imgName:수박1, text:"당도선별 11brix", price:"25,000원"},
+        { id:2, imgName:수박2, text:"국내산 프리미엄", price:"35,000원"},
+        { id:3, imgName:수박3, text:"13brix 100%국내산", price:"28,000원"},
+        { id:4, imgName:수박4, text:"고당도 참박수박", price:"20,000원"}
+    ];
+    
+
     return (
         <div id="product">
             <h3>오늘의 상품</h3>
             <p>새로운 상품을 만나보세요</p>
-            <Item imgName={수박1} text="당도선별 11brix" price="25,000원"/>
+            {watermelons.map( watermelon =>(
+                <Item key={watermelon.id} imgName={watermelon.imgName} text={watermelon.text} price={watermelon.price}/>
+            ))}
+
+            {/* <Item imgName={수박1} text="당도선별 11brix" price="25,000원"/>
             <Item imgName={수박2} text="국내산 프리미엄" price="35,000원"/>
             <Item imgName={수박3} text="13brix 100%국내산" price="28,000원"/>
             <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/>
              <Item imgName={수박3} text="13brix 100%국내산" price="28,000원"/>
             <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/>
              <Item imgName={수박3} text="13brix 100%국내산" price="28,000원"/>
-            <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/>
+            <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/> */}
         </div>
     );
 };
