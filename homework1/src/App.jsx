@@ -3,7 +3,7 @@
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Article from './components/Article'
-
+import './TripTest.css';
 
 function App() {
  

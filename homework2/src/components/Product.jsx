@@ -18,6 +18,10 @@ const Product = () => {
             <Item imgName={수박2} text="국내산 프리미엄" price="35,000원"/>
             <Item imgName={수박3} text="13brix 100%국내산" price="28,000원"/>
             <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/>
+             <Item imgName={수박3} text="13brix 100%국내산" price="28,000원"/>
+            <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/>
+             <Item imgName={수박3} text="13brix 100%국내산" price="28,000원"/>
+            <Item imgName={수박4} text="고당도 참박수박" price="20,000원"/>
         </div>
     );
 };
