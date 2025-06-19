@@ -19,7 +19,7 @@ const CommentList = () => {
     return (
         <div>
             {comments.map((user)=>(
-                <Comment id={user.name} name={user.name} text={user.comment}/>
+                <Comment key={user.name} name={user.name} text={user.comment}/>
             ))}
             
         </div>
