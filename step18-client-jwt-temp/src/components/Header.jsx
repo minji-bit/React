@@ -5,11 +5,11 @@ import { LoginContext } from '../App';
 import Button from './Button';
 
 const Header =()=>{
-  const {isLogin,handleLoginChange} = useContext(LoginContext);
+  const {isLogin,setIsLogin} = useContext(LoginContext);
   const nav = useNavigate();
   const logoutCheck=()=>{
     localStorage.clear();
-    handleLoginChange(false);
+    setIsLogin(false);
     nav("/");
   }
     return (

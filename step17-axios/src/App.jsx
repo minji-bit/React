@@ -4,7 +4,8 @@ import axios from 'axios';
 
 function App() {
   const selectAll=()=>{
-    axios.get("https://jsonplaceholder.typicode.com/users")
+    axios
+        .get("https://jsonplaceholder.typicode.com/users")
         .then((result)=>{
           console.log(result.data);
           result.data.map(user=>console.log(user.id+" | "+user.address.street));

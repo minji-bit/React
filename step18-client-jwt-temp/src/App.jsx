@@ -10,7 +10,7 @@ import JoinForm from './pages/user/JoinForm'
 import NotFound from './pages/NotFound'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import { createContext, useEffect } from 'react'
+import { createContext, useEffect ,useState} from 'react'
 
 
 export const LoginContext = createContext();
@@ -21,14 +21,11 @@ function App() {
     localStorage.getItem("id") != null ? setIsLogin(true) : setIsLogin(false);
   },[isLogin]);
 
-  const handleLoginChange=(isLogin)=>{
-        setIsLogin(isLogin);
-
-  };
+ 
 
   return (
     <div className="App">
-      <LoginContext.Provider value={{isLogin,handleLoginChange}}>
+      <LoginContext.Provider value={{isLogin,setIsLogin}}>
        <Header/>
        <main className="AppManin">
         <Routes>

@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 
 import LabelText from "../../components/LabelText";
 import "./JoinForm.css";
-import axiosInstance from './api/axiosinstance';
+import axiosInstance from '../../api/axiosinstance';
 import { useNavigate } from 'react-router-dom';
 
 const JoinForm =()=>{
@@ -22,6 +22,7 @@ const JoinForm =()=>{
 
   //각 text 박스에 값이 변경되었을 때
   const changeValue = (e) => {
+      //입력 값이 변경 될 때마다 member의 정보를 변경
       setMember({...member,[e.target.name]:e.target.value});
        //중복 체크하기
       if(e.target.name==="id"&&e.target.value!==""){
@@ -47,7 +48,8 @@ const JoinForm =()=>{
         data:member
       })
       .then((res)=>{
-        nav("/")
+        console.log(res);
+        nav("/");
       })
       .catch((err)=>{console.log(err)});
 
@@ -57,7 +59,7 @@ const JoinForm =()=>{
       <h1 className="h1">회원가입</h1>
      
         <div className="idDuplicate">
-          <LabelText text={"아이디"} name={"id"}   changeValue={changeValue}/>
+           <LabelText text={"아이디"} name={"id"}   changeValue={changeValue}/> {/*changeValue 라는 props 를 전달 */}
          <div className="idText" style={ isCheckResult ? {color: "red"} : {color: "blue" } }>{idCheckResult}</div>
         </div>
 

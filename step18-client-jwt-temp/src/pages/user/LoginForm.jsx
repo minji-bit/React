@@ -3,20 +3,22 @@ import LabelText from "../../components/LabelText";
 import  { useContext, useState } from "react";
 import "./LoginForm.css";
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from './api/axiosinstance';
+import axiosInstance from '../../api/axiosinstance';
 import { LoginContext } from "../../App";
 
 const LoginForm =()=>{
-  const {handleLoginChange} = useContext(LoginContext);
+  const {setIsLogin} = useContext(LoginContext);
+  
 
   // 인증에 필요한 username, password 상태관리를 위한 useState
   const [member, setMember] = useState({
     username: "",
-    password: "",
+    pwd: "",
   });
 
   // input 에 값이 입력될 때 상태 값 수정
   const changeValue = (e) => {
+    
     setMember({
       ...member,
       [e.target.name]: e.target.value,
@@ -26,15 +28,15 @@ const LoginForm =()=>{
    const nav = useNavigate();
  //로그인
   const submitLogin = (e) => {
-    e.preventDefault();  //새로고침 될까봐?
+    e.preventDefault();  //새로고침 안되게 하려고!!
 
     const formData = new FormData();
     formData.append("username",member.username);
-    formData.append("password",member.password);
+    formData.append("password",member.pwd);
 
     axiosInstance({
       method:"post",
-      url:"/login", //springsecurity 사용하면 default?
+      url:"/login", //springsecurity 사용하면 default경로이고 바꿀수도 있따! 
       data:formData
     })
     .then((res)=>{
@@ -45,7 +47,7 @@ const LoginForm =()=>{
       localStorage.setItem("address", res.data.address);
       localStorage.setItem("Authorization", res.headers.authorization);
       //App.js 에 있는 isLogin 변수를 true 변경한다.
-      handleLoginChange(true);
+      setIsLogin(true);
       //Home.jsx 로 이동한다.
       nav("/");
     })
@@ -58,6 +60,7 @@ const LoginForm =()=>{
   //취소
    const cancelBack=(e)=>{
       e.preventDefault();
+     
       setMember({
     username: "",
     password: "",
@@ -69,7 +72,7 @@ const LoginForm =()=>{
       <div className="LoginForm">
         <h1 className="h1">로그인</h1>
         <LabelText text={"아이디"} name={"username"}  changeValue={changeValue} />
-        <LabelText text={"비밀번호"} name={"password"} changeValue={changeValue} />
+        <LabelText text={"비밀번호"} name={"pwd"} changeValue={changeValue} />
 
         <div className="divBtn">
             <Button text={"로그인"}  type={"button"}  onClick={submitLogin}/>
