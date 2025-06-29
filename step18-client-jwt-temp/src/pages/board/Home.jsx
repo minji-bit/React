@@ -23,7 +23,7 @@ const Home =()=>{
               setBoards(res.data);
           })
           .catch(err=>{
-            if(err.response.status===403){  //403에러???
+            if(err.response.status===403){  //403에러??? // 권한없음
               localStorage.clear();//모든 세션의 정보 지우기
                 setIsLogin(false);
                 alert("로그인하고 이용해주세요.");

@@ -2,6 +2,8 @@ import { useState } from "react";
 import Button from "../../components/Button";
 import LabelText from "../../components/LabelText";
 import "./SaveForm.css";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../api/axiosinstance";
 
 const SaveForm =()=>{
   
@@ -20,8 +22,30 @@ const SaveForm =()=>{
     });
   };
 
+  const nav = useNavigate();
   //등록하기 클릭
   const submitBoard = (e) => {
+    axiosInstance({
+      method:"post",
+      url:"/boards",
+      data:board,
+      headers:{
+        Authorization : localStorage.getItem("Authorization")
+      }
+    })
+    .then((res)=>{
+      console.log(res);
+      nav("/");
+    })
+    .catch(err=>{
+      if(err.response.status===403){
+        alert("로그인된 사용자만이 글을 등록할 수 있어요.")
+        nav("/");
+      } else{
+        alert(err.response.data.detail);
+      }
+    })
+
     
   };
 
